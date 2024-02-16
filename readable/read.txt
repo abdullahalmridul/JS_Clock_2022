@@ -1,0 +1,121 @@
+HTML Code :{
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="stylesheet/style.css">
+    <link rel="icon" href="images/icons/clock.png" type="image/x-icon">
+</head>
+<body id="main">
+    <div class="time-con">
+        <div>
+            <p class="clock">
+                <p id="hr">00</p>
+                <p>:</p>
+                <p id="min">00</p>
+                <p>:</p>
+                <p id="sec">00</p>
+                <p id="ind">NaN</p>
+            </p>
+        </div>
+    </div>
+    <script src="javascript/script.js"></script>
+</body>
+</html>
+}
+
+
+
+
+
+
+
+
+
+
+
+CSS Code :{
+    @font-face {
+    font-family: Cascadia;
+    src: url(../fonts/Cascadia.ttf);
+}
+@font-face {
+    font-family: Digitalclock;
+    src: url(../fonts/digital-7.ttf);
+}
+body {
+    text-align: center;
+    background-color: #292d3ef5;
+    color: #DEA2B8;
+    font-family: Cascadia;
+    text-shadow: 11px 11px 15px #DDB787;
+}
+p{
+    display: inline;
+    font-size: 250px;
+    font-family: digitalclock;
+}
+#ind{
+    font-size: 80px;
+    margin-left: 20px;
+}
+.time-con{
+    margin-top: 260px;
+    border-radius: 80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    height: 35%;
+    width: 1200px;
+    margin-left: 320px;
+    background-color: transparent;
+    -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 5px 5px 150px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 150px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 150px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+.time-con div{
+    text-align: center;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+JS Code :{
+var clock = document.getElementsByClassName('clock');
+var second = document.getElementById('sec');
+var minuit = document.getElementById('min');
+var hour = document.getElementById('hr');
+var ind = document.getElementById('ind');
+setInterval(() => {
+    let now = new Date();
+    let h = now.getHours();
+    let m = now.getMinutes();
+    let s = now.getSeconds();
+    let i = h < 12 ? 'am' : 'pm'.toUpperCase();
+    if(h < 10){
+        hour.textContent = '0' + h;
+    }else{
+        hour.textContent = h;
+    }
+    if(m < 10){
+        minuit.textContent = '0' + m;
+    }else{
+        minuit.textContent = m;
+    }
+    if(s < 10){
+        second.textContent = '0' + s;
+    }else{
+        second.textContent = s;
+    }
+    ind.textContent = i;
+}, 1000);
+}
